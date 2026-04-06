@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HiOutlineCog } from 'react-icons/hi';
 import { fetchSettings, updateSettings } from '../services/api';
 import { toast } from 'react-toastify';
+import { Skeleton, CardSkeleton } from '../components/Skeleton';
 
 function Settings() {
     const [form, setForm] = useState({
@@ -44,7 +45,7 @@ function Settings() {
         finally { setSaving(false); }
     };
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <div className="page-container"><div className="page-header"><Skeleton width="180px" height="32px"/></div><CardSkeleton /></div>;
 
     return (
         <div className="page-container">

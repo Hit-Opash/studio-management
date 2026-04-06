@@ -3,6 +3,7 @@ import { HiOutlinePlus, HiOutlinePencil, HiOutlineTrash, HiOutlineSearch, HiOutl
 import { fetchLeads, createLead, updateLead, deleteLead } from '../services/api';
 import { format } from 'date-fns';
 import { toast } from 'react-toastify';
+import { PageSkeleton } from '../components/Skeleton';
 
 function Leads() {
     const [leads, setLeads] = useState([]);
@@ -49,7 +50,7 @@ function Leads() {
 
     const statusBadge = (s) => ({ New: 'badge-info', 'Follow Up': 'badge-warning', Converted: 'badge-success', Closed: 'badge-danger' }[s] || 'badge-primary');
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <PageSkeleton cols={7} rows={5} />;
 
     return (
         <div className="page-container">

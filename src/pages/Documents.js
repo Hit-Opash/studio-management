@@ -3,6 +3,7 @@ import { HiOutlinePlus, HiOutlineTrash, HiOutlineX } from 'react-icons/hi';
 import { fetchDocuments, createDocument, deleteDocument, fetchEvents } from '../services/api';
 import { format } from 'date-fns';
 import { toast } from 'react-toastify';
+import { PageSkeleton } from '../components/Skeleton';
 
 function Documents() {
     const [docs, setDocs] = useState([]);
@@ -33,7 +34,7 @@ function Documents() {
 
     const typeBadge = (t) => ({ Contract: 'badge-primary', Invoice: 'badge-success', 'Client Document': 'badge-info', 'Event Schedule': 'badge-warning' }[t] || 'badge-secondary');
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <PageSkeleton cols={6} rows={5} />;
 
     return (
         <div className="page-container">

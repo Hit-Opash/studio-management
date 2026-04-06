@@ -5,6 +5,12 @@ const API = axios.create({
     timeout: 10000,
 });
 
+// Add 1 second delay to all requests to show off skeleton loaders
+API.interceptors.request.use(async (config) => {
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    return config;
+});
+
 // Dashboard
 export const fetchDashboard = () => API.get('/dashboard');
 

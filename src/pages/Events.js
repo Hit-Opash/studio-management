@@ -3,6 +3,7 @@ import { HiOutlinePlus, HiOutlinePencil, HiOutlineTrash, HiOutlineSearch, HiOutl
 import { fetchEvents, createEvent, updateEvent, deleteEvent, fetchPackages } from '../services/api';
 import { format } from 'date-fns';
 import { toast } from 'react-toastify';
+import { PageSkeleton } from '../components/Skeleton';
 
 const EVENT_TYPES = ['Wedding', 'Pre-Wedding', 'Birthday', 'Corporate', 'Engagement', 'Baby Shower', 'Portrait', 'Product', 'Fashion', 'Other'];
 
@@ -115,7 +116,7 @@ function Events() {
 
     const totalAmount = (ev) => (ev.packagePrice + ev.extraCharges) - ev.discount;
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <PageSkeleton cols={8} rows={5} />;
 
     return (
         <div className="page-container">

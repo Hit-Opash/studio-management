@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HiOutlinePlus, HiOutlinePencil, HiOutlineTrash, HiOutlineX } from 'react-icons/hi';
 import { fetchPackages, createPackage, updatePackage, deletePackage } from '../services/api';
 import { toast } from 'react-toastify';
+import { PageSkeleton } from '../components/Skeleton';
 
 function Packages() {
     const [packages, setPackages] = useState([]);
@@ -38,7 +39,7 @@ function Packages() {
         catch { toast.error('Failed'); }
     };
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <PageSkeleton cols={4} rows={3} />;
 
     return (
         <div className="page-container">

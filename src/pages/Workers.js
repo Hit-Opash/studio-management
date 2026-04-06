@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { HiOutlinePlus, HiOutlinePencil, HiOutlineTrash, HiOutlineSearch, HiOutlineX } from 'react-icons/hi';
 import { fetchWorkers, createWorker, updateWorker, deleteWorker, fetchEventWorkers } from '../services/api';
 import { toast } from 'react-toastify';
+import { PageSkeleton } from '../components/Skeleton';
 
 const ROLES = ['Photographer', 'Videographer', 'Assistant', 'Editor'];
 const SALARY_TYPES = ['Monthly', 'Per Event', 'Per Day'];
@@ -80,7 +81,7 @@ function Workers() {
         return map[role] || 'badge-primary';
     };
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <PageSkeleton cols={5} rows={4} />;
 
     return (
         <div className="page-container">

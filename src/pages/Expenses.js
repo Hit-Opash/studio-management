@@ -3,6 +3,7 @@ import { HiOutlinePlus, HiOutlinePencil, HiOutlineTrash, HiOutlineSearch, HiOutl
 import { fetchExpenses, createExpense, updateExpense, deleteExpense } from '../services/api';
 import { format } from 'date-fns';
 import { toast } from 'react-toastify';
+import { PageSkeleton } from '../components/Skeleton';
 
 function Expenses() {
     const [expenses, setExpenses] = useState([]);
@@ -51,7 +52,7 @@ function Expenses() {
 
     const catBadge = (c) => ({ Travel: 'badge-primary', Marketing: 'badge-info', Equipment: 'badge-warning', Salary: 'badge-success', Rent: 'badge-danger' }[c] || 'badge-secondary');
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <PageSkeleton cols={5} rows={6} />;
 
     return (
         <div className="page-container">

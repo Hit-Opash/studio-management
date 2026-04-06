@@ -3,6 +3,7 @@ import { HiOutlinePlus, HiOutlineSearch, HiOutlineTrash, HiOutlineX } from 'reac
 import { fetchPayments, createPayment, deletePayment, fetchEvents } from '../services/api';
 import { format } from 'date-fns';
 import { toast } from 'react-toastify';
+import { PageSkeleton } from '../components/Skeleton';
 
 function Payments() {
     const [payments, setPayments] = useState([]);
@@ -48,7 +49,7 @@ function Payments() {
         return map[m] || 'badge-primary';
     };
 
-    if (loading) return <div className="page-container"><div className="loading-spinner"><div className="spinner"></div></div></div>;
+    if (loading) return <PageSkeleton cols={7} rows={5} />;
 
     return (
         <div className="page-container">
